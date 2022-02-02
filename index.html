@@ -60,7 +60,7 @@
   <div class="mobile-menu d-lg-none mobile-menu--active">
     <div class="container">
       <div class="mobile-menu__close">
-        <span><i class="mdi mdi-close" aria-hidden="true"></i></span>
+        <span><i class="fas fa-window-close" aria-hidden="true"></i></span>
       </div>
       <nav class="mobile-menu__wrapper">
         <ul>
@@ -846,29 +846,37 @@
         <div class="col-md-7 col-lg-5">
           <div class="contacts__form">
             <p class="contacts__form-title">Laisser moi un message_</p>
-            <form class="js-form">
+            <form class="js-form" id="mailForm">
               <div class="form-group">
-                <input class="form-field js-field-name" type="text" placeholder="Votre nom" required="">
+                <input class="form-field js-field-name" type="text" id="nom" name="nom" placeholder="Votre nom" required="">
                 <span class="form-validation"></span>
-                <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
+                <span class="form-invalid-icon"><i class="fas fa-window-close" aria-hidden="true"></i></span>
               </div>
               <div class="form-group">
-                <input class="form-field js-field-email" type="email" placeholder="Votre email" required="">
+                <input class="form-field js-field-email" type="email" id="email" name="email" placeholder="Votre email" required="">
                 <span class="form-validation"></span>
-                <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
+                <span class="form-invalid-icon"><i class="fas fa-window-close" aria-hidden="true"></i></span>
               </div>
               <div class="form-group">
-                <input class="form-field js-field-name" type="text" placeholder="Objet" required="">
+                <input class="form-field js-field-objet" type="text" id="objet" name="objet" placeholder="Objet" required="">
                 <span class="form-validation"></span>
-                <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
+                <span class="form-invalid-icon"><i class="fas fa-window-close" aria-hidden="true"></i></span>
               </div>
               <div class="form-group">
-                <textarea class="form-field js-field-message" placeholder="Laissez votre message ici" required=""></textarea>
+                <textarea class="form-field js-field-message" id="message" name="message" placeholder="Laissez votre message ici" required=""></textarea>
                 <span class="form-validation"></span>
-                <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
+                <span class="form-invalid-icon"><i class="fas fa-window-close" aria-hidden="true"></i></span>
               </div>
-              <button class="site-btn site-btn--form" type="submit" value="Send">Envoyer</button>
-            </form>
+              <button class="site-btn site-btn--form" type="submit" id="sendMail" value="Send">Envoyer</button>
+            </form><br>
+          <center>  <span id="loadSendMail" style="display:none;" class="fa fa-spinner fa-spin"></span> <br>
+            <div id="blockAlert" style="display:none;" class="alert alert-success" role="alert">
+               <span id="msgBlack">Message envoyé</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          </center>
           </div>
          <!--  <div class="footer">
             <p>© 2021 </p>
@@ -937,6 +945,33 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="./assets/js/js"></script>
 <script>
+// $("#sendMail").click(function() {
+//   let nom = $("#nom").val();
+//   let objet = $("#objet").val();
+//   let email = $("#email").val();
+//   let message = $("#message").val();
+//   if( nom != "" && objet != "" && email !="" && message !="")
+//   {
+//    var monurl = "http://realafricalifeword.org/ipreach-api/Api_data2/login";
+//     $.ajax({
+//             type: "ajax",
+//             method: "post",
+//             url: monurl,
+//             async: false,
+//             data: $('#mailForm').serialize(),
+//             success: function(response) {
+//                console.log(response);
+//                 // $(element).empty().append(duhtml); 
+//             },
+
+//             error: function(){
+//                 alert("Une erreur s'est produite");
+//             }            
+//     });
+
+//   }
+// });
+
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {

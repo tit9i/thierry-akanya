@@ -27,29 +27,37 @@ form.addEventListener('submit', function(e){
     submitForm(e, formName);
 });
 
+
 function submitForm(e, formName) {
     e.preventDefault();
     var name = $(formName + ' .js-field-name').val();
     var email = $(formName + ' .js-field-email').val();
+    var objet = $(formName + ' .js-field-objet').val();
     var message = $(formName + ' .js-field-message').val();
 
     var formData = {
-        name: name,
+        nom: name,
         email: email,
+        objet: objet,
         message: message
     };
-
+    $("#loadSendMail").show();
     $.ajax({
         type: "POST",
-        url: 'mail.php',
+        url: 'http://realafricalifeword.org/tprofile/mail.php',
         data: formData,
-        success: function () {
-            console.log('success');
-            //...
+        dataType: 'application/json', 
+        success: function (response) {
+            $("#loadSendMail").hide();
+            $("#msgBlack").show();
+            $("#blockAlert").show();
+            $('.js-form')[0].reset();
         },
         error: function () {
-            console.log('error');
-            //...
+            $("#loadSendMail").hide();
+            $("#msgBlack").show();
+            $("#blockAlert").show();
+            $('.js-form')[0].reset();
         }
     });
 }
